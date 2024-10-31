@@ -12,11 +12,11 @@ class ShoppingCartPage:
     def __init__(self, driver):
         self.random_products = None
         self.driver = driver
-
+    # go to shopping cart
     def go_to_shopping_cart_page(self):
         self.driver.get("http://localhost/opencart/index.php?route=checkout/cart&language=en-gb")
         time.sleep(1)
-
+    # details product
     def details_product_macbook(self):
         self.go_to_shopping_cart_page()
         pages.home_page.NavigationPage.home_page = NavigationPage(self.driver)
@@ -24,12 +24,12 @@ class ShoppingCartPage:
         self.scroll_to_element(self.driver.find_element(By.LINK_TEXT, "MacBook"))
         self.driver.find_element(By.LINK_TEXT, "MacBook").click()
         time.sleep(1)
-
+    # scroll to element
     def scroll_to_element(self, element):
         """Cuộn đến một phần tử cụ thể trên trang."""
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         time.sleep(1)
-
+    # add product
     def add_product_to_cart_macbook(self):
         pages.NavigationPage.home_page = NavigationPage(self.driver)
         pages.NavigationPage.home_page.go_to_all_desktops(self.driver)
@@ -39,47 +39,47 @@ class ShoppingCartPage:
         self.driver.find_element(By.XPATH,
                                  "/html/body/main/div[2]/div/div/div[4]/div[5]/div/div[2]/form/div/button[1]").click()
         time.sleep(3)
-
+    # quantity
     def quantity(self, quantity):
         self.driver.find_element(By.ID, "input-quantity").clear()
         self.driver.find_element(By.ID, "input-quantity").send_keys(quantity)
         time.sleep(1)
-
+    # get message
     def get_message(self):
         message = self.driver.find_element(By.XPATH, "/html/body/div/div").text
         return message
-
+    # add more
     def add_more_product(self):
         self.driver.find_element(By.ID, "button-cart").click()
         time.sleep(1)
-
+    # search
     def search_product(self, productname):
         self.driver.find_element(By.XPATH, "/html/body/header/div/div/div[2]/div/input").send_keys(productname)
         self.driver.find_element(By.XPATH, "/html/body/header/div/div/div[2]/div/button").click()
         time.sleep(2)
-
+    # go back
     def go_back(self):
         self.driver.back()
         time.sleep(1)
-
+    # clear quantity input field
     def clear_quantity(self):
         self.driver.find_element(By.ID, "input-quantity").clear()
         time.sleep(1)
-
+    # remove
     def remove_product(self):
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[1]/div/table/tbody/tr[1]/td[4]/form/div/button[2]").click()
         time.sleep(1)
-
+    # update
     def update_product(self):
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[1]/div/table/tbody/tr/td[4]/form/div/input[1]").clear()
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[1]/div/table/tbody/tr/td[4]/form/div/input[1]").send_keys(random.randint(1, 10))
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[1]/div/table/tbody/tr/td[4]/form/div/button[1]").click()
         time.sleep(1)
-
+    # button label macbook
     def button_label_macbook(self):
         self.scroll_to_element(self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[5]/div[1]/div/div[2]/form/div/button[1]"))
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[5]/div[1]/div/div[2]/form/div/button[1]").click()
-
+    # button label air
     def button_label_air(self):
         self.scroll_to_element(self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[5]/div[2]/div/div[2]/form/div/button[1]"))
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[5]/div[2]/div/div[2]/form/div/button[1]").click()
