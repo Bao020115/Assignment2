@@ -57,7 +57,7 @@ class NavigationPage(Driver):
     def go_to_product_details(self, driver):
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/div[2]/div[1]/div/div[1]/a/img").click()
         time.sleep(3)
-    # go to contact us
-    def go_to_contactus(self, driver):
-        self.driver.find_element(By.XPATH, "/html/body/footer/div/div/div[2]/ul/li[1]/a").click()
-        time.sleep(3)
+
+    #scroll to element
+    def scroll_to_element(self, element):
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)

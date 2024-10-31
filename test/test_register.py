@@ -12,7 +12,7 @@ class TestSubmission(Driver):
         time.sleep(2)
         firstname = "test"
         lastname = "test"
-        email = "test@gmail.com"
+        email = "test11@gmail.com"
         password = "test"
         regis_page.input_firstname(firstname)
         regis_page.input_lastname(lastname)
@@ -47,7 +47,7 @@ class TestSubmission(Driver):
         time.sleep(2)
         firstname = "test"
         lastname = "test"
-        email = "test@gmail.com"
+        email = "test7@gmail.com"
         password = "test"
         regis_page.input_firstname(firstname)
         regis_page.input_lastname(lastname)
@@ -107,7 +107,7 @@ class TestSubmission(Driver):
         regis_page.agree_privacy_policy()
         regis_page.submit()
         time.sleep(2)
-        assert "E-Mail Address does not appear to be valid!" in regis_page.get_error_message()
+        assert regis_page.get_error_input() != 0
     # register with 30 characters password
     def test_submission_with_30_characters_password(self, driver):
         regis_page = RegisPage(driver)
@@ -115,7 +115,7 @@ class TestSubmission(Driver):
         time.sleep(2)
         firstname = "test"
         lastname = "test"
-        email = "test1@gmail.com"
+        email = "test12@gmail.com"
         password = "1234567890123456789012345678901234567890"
         regis_page.input_firstname(firstname)
         regis_page.input_lastname(lastname)

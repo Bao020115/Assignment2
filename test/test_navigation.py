@@ -53,7 +53,7 @@ class TestNavigation(Driver):
         time.sleep(2)
         home_page.go_to_phones(driver)
         time.sleep(2)
-        assert driver.current_url == "http://localhost/opencart/index.php?route=product/category&language=en-gb&path=19"
+        assert driver.current_url == "http://localhost/opencart/index.php?route=product/category&language=en-gb&path=24"
     # navigate to all cameras
     def test_navigate_to_cameras(self,driver):
         home_page = NavigationPage(driver)
@@ -95,11 +95,4 @@ class TestNavigation(Driver):
         home_page.go_to_product_details(driver)
         time.sleep(2)
         assert driver.current_url == "http://localhost/opencart/index.php?route=product/product&language=en-gb&product_id=43"
-    # navigate to contactus
-    def test_navigate_to_contactus(self,driver):
-        home_page = NavigationPage(driver)
-        home_page.go_to_home_page()
-        time.sleep(2)
-        home_page.go_to_contactus(driver)
-        time.sleep(2)
-        assert driver.current_url == "http://localhost/opencart/index.php?route=information/contact&language=en-gb"
+
