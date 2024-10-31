@@ -35,6 +35,7 @@ class RegisPage(Driver):
         time.sleep(2)
     # submit form
     def submit(self):
+        self.scroll_to_element(self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/form/div/button"))
         self.driver.find_element(By.XPATH, "/html/body/main/div[2]/div/div/form/div/button").click()
         time.sleep(2)
     # get error
