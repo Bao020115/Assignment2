@@ -4,6 +4,7 @@ import time
 
 
 class TestLogin(Driver):
+    # test logout with login
     def test_logout(self, driver):
         login_Page = LoginPage(driver)
         email = "trangiabao256@gmail.com"
@@ -12,7 +13,7 @@ class TestLogin(Driver):
         time.sleep(5)
         login_Page.logout()
         assert driver.current_url == "http://localhost/opencart/index.php?route=account/logout&language=en-gb"
-
+    # test logout without login
     def test_logout_without_login(self, driver):
         driver.get("http://localhost/opencart/index.php?route=account/logout&language=en-gb")
         assert driver.current_url != "http://localhost/opencart/"

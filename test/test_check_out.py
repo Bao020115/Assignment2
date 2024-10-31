@@ -8,6 +8,9 @@ from utils.webdriver_setup import Driver
 from selenium.webdriver.common.by import By
 
 class TestCheckout(Driver):
+
+    # checkout when using new address with valid info
+    # if usenew account, must use (20-28)
     def test_checkout_with_valid_info(self, driver):
         login_page = LoginPage(driver)
         email = "test@gmail.com"
@@ -15,15 +18,15 @@ class TestCheckout(Driver):
         login_page.go_to_login(email, password)
         time.sleep(3)
 
-        # shoppingcart_page = ShoppingCartPage(driver)
-        # shoppingcart_page.go_to_shopping_cart_page()
-        # productname = "MacBook"
-        # shoppingcart_page.search_product(productname)
-        # shoppingcart_page.button_label_macbook()
-        # time.sleep(3)
-        # shoppingcart_page.button_label_air()
-        # assert "Success: You have added" in shoppingcart_page.get_message()
-        # time.sleep(3)
+        shoppingcart_page = ShoppingCartPage(driver)
+        shoppingcart_page.go_to_shopping_cart_page()
+        productname = "MacBook"
+        shoppingcart_page.search_product(productname)
+        shoppingcart_page.button_label_macbook()
+        time.sleep(3)
+        shoppingcart_page.button_label_air()
+        assert "Success: You have added" in shoppingcart_page.get_message()
+        time.sleep(3)
 
         checkout_page = CheckoutPage(driver)
         checkout_page.go_to_checkout_page()
@@ -41,7 +44,7 @@ class TestCheckout(Driver):
         checkout_page.comfirm_order()
         assert "checkout/success" in driver.current_url
         time.sleep(3)
-
+    # blank all feilds in checkout
     def test_checkout_with_invalid_info(self,driver):
         login_page = LoginPage(driver)
         email = "test@gmail.com"
